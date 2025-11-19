@@ -1,0 +1,13 @@
+api:
+  port: "8080"
+  mode: "production"
+
+logger:
+  logger: "logrus"
+  app-name: "demo-app-go"
+  log-method: "N"
+  #syslog-host: "some.host:514"
+  # can be Trace, Debug, Info, Warning, Error, Fatal
+  log-level: Debug
+  # can be Text or JSON
+  log-format: JSON

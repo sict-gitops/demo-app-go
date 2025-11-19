@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-go
+  labels:
+    app: demo-app-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app-go
+  template:
+    metadata:
+      labels:
+        app: demo-app-go
+    spec:
+      containers:
+        - name: application
+          image: some-registry/demo-app-go:some-tag
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name:  config-volume
+              mountPath:  /app/conf
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 30
+      volumes:
+        - name:  config-volume
+          configMap:
+            name:  go-app-config

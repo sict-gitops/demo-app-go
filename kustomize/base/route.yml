@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: demo-app-go
+  labels:
+    app: demo-app-go
+spec:
+  to:
+    kind: Service
+    name: demo-app-go
+    weight: 100
+  port:
+    targetPort: 80
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

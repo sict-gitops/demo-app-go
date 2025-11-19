@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-go
+spec:
+  template:
+    spec:
+      containers:
+        - name: application
+          image: quay.io/miroslavkolar/demo-app-go:1.0
