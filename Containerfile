@@ -1,4 +1,4 @@
-FROM golang:1.25 as gobuilder
+FROM docker.io/library/golang:1.25 as gobuilder
 WORKDIR /build
 COPY backend .
 RUN go mod tidy
