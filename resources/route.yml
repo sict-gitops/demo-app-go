@@ -9,4 +9,4 @@ spec:
     kind: Service
     name: demo-app-go
   port:
-    targetPort: http
+    targetPort: 8080

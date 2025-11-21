@@ -43,7 +43,7 @@ service:
   targetPort: 8080
 
 route:
-  enabled: false
+  enabled: true
 
 resources:
   limits:

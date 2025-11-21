@@ -8,9 +8,5 @@ spec:
   to:
     kind: Service
     name: demo-app-go
-    weight: 100
   port:
-    targetPort: 80
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+    targetPort: 8080
